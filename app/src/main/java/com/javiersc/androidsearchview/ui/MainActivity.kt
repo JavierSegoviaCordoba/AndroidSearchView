@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+        //startActivity(Intent(this, CollapsingActivity::class.java))
+
         materialSearchView.onSearchTextChanged = { text ->
             println(text)
             if (text.isEmpty()) suggestionAdapter.submitList(emptyList())

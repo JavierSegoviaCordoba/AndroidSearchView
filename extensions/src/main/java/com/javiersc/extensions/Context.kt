@@ -14,3 +14,10 @@ fun Context.font(fontId: Int): Typeface = try {
 } catch (e: Resources.NotFoundException) {
     Typeface.DEFAULT
 }
+fun Context.statusBarHeight(): Int? {
+    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        return this.resources.getDimensionPixelSize(resourceId)
+    }
+    return null
+}

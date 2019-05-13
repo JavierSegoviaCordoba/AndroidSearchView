@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.javiersc.extensions.*
 import com.javiersc.materialsearchview.setups.setupClose
 import com.javiersc.materialsearchview.setups.setupOpen
 import com.javiersc.materialsearchview.utils.SearchBackgroundAnimation
+import com.javiersc.materialsearchview.utils.SearchBehavior
 import com.javiersc.searchtext.SearchTextAnimation
 import com.javiersc.searchtext.SearchTextProperties
 import com.javiersc.searchtheme.SearchTheme
@@ -28,7 +30,7 @@ class MaterialSearchView<T> @JvmOverloads constructor(
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attributeSet, defStyleAttr), SearchThemeProperties, SearchTextProperties,
-    SuggestionListFields<T>, MaterialSearchViewProperties {
+    SuggestionListFields<T>, MaterialSearchViewProperties, CoordinatorLayout.AttachedBehavior {
 
 
     // THEME
@@ -144,6 +146,8 @@ class MaterialSearchView<T> @JvmOverloads constructor(
 
     override fun open() = setupOpen(this)
     override fun close() = setupClose(this)
+
+    override fun getBehavior(): CoordinatorLayout.Behavior<*> = SearchBehavior<T>(context)
 
     init {
 

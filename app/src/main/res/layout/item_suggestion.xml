@@ -30,7 +30,6 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-
     <TextView
         android:id="@+id/textViewName"
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
