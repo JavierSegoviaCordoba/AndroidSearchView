@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android Search View</string>
+    <string name="profile_image_label">Profile image</string>
+    <string name="change_theme">Change Theme</string>
+</resources>

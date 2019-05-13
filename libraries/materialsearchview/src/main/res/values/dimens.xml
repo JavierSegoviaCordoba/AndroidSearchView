@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="searchCardUpIconMarginLeft">16dp</dimen>
+    <dimen name="cardViewSearchMargin">4dp</dimen>
+    <dimen name="cardViewSearchCornerRadius">2dp</dimen>
+    <dimen name="cardViewSearchElevation">8dp</dimen>
+    <dimen name="cardViewSuggestionCornerRadius">2dp</dimen>
+    <dimen name="cardViewSuggestionElevation">8dp</dimen>
+    <dimen name="cardViewSuggestionVerticalOffset">4dp</dimen>
+    <dimen name="cardViewSuggestionMarginLeft">4dp</dimen>
+    <dimen name="cardViewSuggestionMarginTop">4dp</dimen>
+    <dimen name="cardViewSuggestionMarginRight">4dp</dimen>
+    <dimen name="cardViewSuggestionMarginBottom">4dp</dimen>
+</resources>

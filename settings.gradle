@@ -1,0 +1,4 @@
+include(":app")
+include(":extensions")
+include(":components:searchtheme",":components:searchtext", ":components:suggestionlist")
+include(":libraries:materialsearchview", ":libraries:menumaterialsearchview")

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MaterialSearchView">
+
+        <attr name="searchTheme" format="enum">
+            <enum name="LIGHT" value="0" />
+            <enum name="DARK" value="1" />
+        </attr>
+
+        <attr name="searchTextColor" format="color" />
+        <attr name="searchTextHint" format="string" />
+        <attr name="searchTextHintColor" format="color" />
+        <attr name="searchTextFont" format="reference" />
+
+        <attr name="suggestionItemMarginTop" format="dimension" />
+        <attr name="suggestionItemMarginLeft" format="dimension" />
+        <attr name="suggestionItemMarginRight" format="dimension" />
+        <attr name="suggestionItemMarginBottom" format="dimension" />
+
+        <attr name="fixKeyboardMargin" format="dimension" />
+
+    </declare-styleable>
+
+</resources>

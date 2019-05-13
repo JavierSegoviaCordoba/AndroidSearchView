@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Add to your custom SearchView attrs
+
+    <attr name="searchTextColor" format="color" />
+    <attr name="searchTextHint" format="string" />
+    <attr name="searchTextHintColor" format="color" />
+    <attr name="searchTextFont" format="reference" />
+    <attr name="searchTextMarginLeft" format="dimension" />
+    <attr name="searchTextMarginTop" format="dimension" />
+    <attr name="searchTextMarginRight" format="dimension" />
+    <attr name="searchTextMarginBottom" format="dimension" />
+
+    -->
+
+</resources>
