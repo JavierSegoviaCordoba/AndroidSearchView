@@ -43,7 +43,7 @@
         msv:searchBackgroundAnimation="RIPPLE" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewItems"
+        android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"

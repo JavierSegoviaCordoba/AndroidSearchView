@@ -14,29 +14,44 @@
         <attr name="searchBackgroundOpenDelay" format="integer" />
         <attr name="searchBackgroundCloseDuration" format="integer" />
         <attr name="searchBackgroundCloseDelay" format="integer" />
-        <attr name="searchCardBackgroundAnimation" format="enum" />
-
         <attr name="searchBackgroundAnimation" format="enum">
             <enum name="RIPPLE" value="0" />
             <enum name="FADE" value="1" />
         </attr>
+        <attr name="searchCardsParentTranslationY" format="integer"/>
 
         <attr name="searchCardBackgroundColor" format="color" />
         <attr name="searchCardCornerRadius" format="dimension" />
         <attr name="searchCardElevation" format="dimension" />
-        <attr name="searchCardBackgroundOpenDuration" format="dimension" />
-        <attr name="searchCardBackgroundCloseDuration" format="dimension" />
-        <attr name="searchCardBackgroundOpenDelay" format="dimension" />
-        <attr name="searchCardBackgroundCloseDelay" format="dimension" />
+
+        <!--    TODO
+                - SearchCardsParent margins
+                - SearchCard margins and offsets
+                - SuggestionCard margins and offsets
+                - RecyclerView margins
+        -->
 
         <attr name="searchTextColor" format="color" />
         <attr name="searchTextHint" format="string" />
         <attr name="searchTextHintColor" format="color" />
         <attr name="searchTextFont" format="reference" />
+        <attr name="searchTextTranslationY" format="dimension" />
+        <attr name="searchTextAnimation" format="enum">
+            <enum name="NONE" value="0" />
+            <enum name="TYPE" value="1" />
+            <enum name="FADE" value="2" />
+        </attr>
+        <attr name="searchTextEnterDuration" format="integer" />
+        <attr name="searchTextEnterDelay" format="integer" />
+        <attr name="searchTextExitDuration" format="integer" />
+        <attr name="searchTextExitDelay" format="integer" />
+        <attr name="searchTextMarginLeft" format="dimension" />
+        <attr name="searchTextMarginTop" format="dimension" />
+        <attr name="searchTextMarginRight" format="dimension" />
+        <attr name="searchTextMarginBottom" format="dimension" />
 
         <attr name="searchUpIconDuration" format="integer" />
         <attr name="searchUpIconDelay" format="integer" />
-
 
     </declare-styleable>
 

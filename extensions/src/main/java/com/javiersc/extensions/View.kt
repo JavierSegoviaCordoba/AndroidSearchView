@@ -55,3 +55,51 @@ fun View.margins(left: Int, top: Int, right: Int, bottom: Int) {
         this.requestLayout()
     }
 }
+
+fun View.marginLeft(marginLeft: Int) {
+    if (this.layoutParams is ViewGroup.MarginLayoutParams) {
+        val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+        with(layoutParams) {
+            setMargins(marginLeft, topMargin, rightMargin, bottomMargin)
+            marginStart = marginLeft
+            marginEnd = rightMargin
+        }
+        this.requestLayout()
+    }
+}
+
+fun View.marginTop(marginTop: Int) {
+    if (this.layoutParams is ViewGroup.MarginLayoutParams) {
+        val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+        with(layoutParams) {
+            setMargins(leftMargin, marginTop, rightMargin, bottomMargin)
+            marginStart = leftMargin
+            marginEnd = rightMargin
+        }
+        this.requestLayout()
+    }
+}
+
+fun View.marginRight(marginRight: Int) {
+    if (this.layoutParams is ViewGroup.MarginLayoutParams) {
+        val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+        with(layoutParams) {
+            setMargins(leftMargin, topMargin, marginRight, bottomMargin)
+            marginStart = leftMargin
+            marginEnd = marginRight
+        }
+        this.requestLayout()
+    }
+}
+
+fun View.marginBottom(marginBottom: Int) {
+    if (this.layoutParams is ViewGroup.MarginLayoutParams) {
+        val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+        with(layoutParams) {
+            setMargins(leftMargin, topMargin, rightMargin, marginBottom)
+            marginStart = leftMargin
+            marginEnd = rightMargin
+        }
+        this.requestLayout()
+    }
+}

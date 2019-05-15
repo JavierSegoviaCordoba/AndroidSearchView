@@ -8,7 +8,7 @@ import com.javiersc.materialsearchview.R
 import com.javiersc.materialsearchview.utils.SearchBackgroundAnimation
 import kotlinx.android.synthetic.main.material_search_view.view.*
 
-internal fun <T> setupCardViewBackground(context: Context, attrs: TypedArray, msv: MaterialSearchView<T>) {
+internal fun <T> setupSearchBackground(context: Context, attrs: TypedArray, msv: MaterialSearchView<T>) {
     with(msv.cardViewSearch) { layoutParams.height = layoutParams.height - 8.dp() }
     with(attrs) {
 
@@ -27,19 +27,17 @@ internal fun <T> setupCardViewBackground(context: Context, attrs: TypedArray, ms
             ).toLong()
         msv.searchBackgroundOpenDuration = searchBackgroundOpenDuration
 
-
         val searchCardBackgroundAnimation: Int =
             getInteger(
                 R.styleable.MaterialSearchView_searchBackgroundAnimation,
-                msv.searchCardBackgroundAnimation.value
+                msv.searchBackgroundAnimation.value
             )
 
-        msv.searchCardBackgroundAnimation =
-            SearchBackgroundAnimation.values().first { it.value == searchCardBackgroundAnimation }
+        msv.searchBackgroundAnimation =
+            SearchBackgroundAnimation.values()
+                .find { it.value == searchCardBackgroundAnimation } ?: SearchBackgroundAnimation.FADE
 
-        msv.cardViewBackground.setOnClickListener {
-            msv.searchTextView.clearFocus()
-        }
+        msv.cardViewBackground.setOnClickListener { msv.searchTextView.clearFocus() }
 
     }
 }

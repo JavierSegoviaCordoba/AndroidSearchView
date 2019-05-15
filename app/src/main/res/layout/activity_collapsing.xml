@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -25,13 +26,13 @@
                 android:layout_height="300dp" />
 
             <androidx.appcompat.widget.Toolbar
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/ThemeOverlay.AppCompat"
-                app:titleTextColor="@android:color/white"
-                android:focusableInTouchMode="true"/>
+                app:titleTextColor="@android:color/white"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

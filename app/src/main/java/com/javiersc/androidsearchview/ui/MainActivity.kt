@@ -1,34 +1,22 @@
 package com.javiersc.androidsearchview.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.javiersc.androidsearchview.R
 import com.javiersc.androidsearchview.model.User
 import com.javiersc.androidsearchview.ui.adapter.SuggestionAdapter
-import com.javiersc.androidsearchview.ui.adapter.UserAdapter
+import com.javiersc.androidsearchview.ui.dummy.Lists
 import com.javiersc.androidsearchview.ui.extension.toastShort
-import com.javiersc.androidsearchview.ui.util.Lists
-import com.javiersc.extensions.dp
-import com.javiersc.extensions.itemMargin
+import com.javiersc.androidsearchview.ui.setups.setupRecyclerView
 import com.javiersc.searchtheme.SearchTheme
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-
-    private val suggestionAdapter = SuggestionAdapter(object : SuggestionAdapter.OnClickListener {
-        override fun onClick(user: User, position: Int) {
-            toastShort("onClick: ${user.name}")
-        }
-
-        override fun onLongClick(user: User, position: Int) {
-            toastShort("onClick: ${user.name}")
-        }
-
-    }, SearchTheme.LIGHT)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,27 +26,33 @@ class MainActivity : AppCompatActivity() {
 
         //startActivity(Intent(this, CollapsingActivity::class.java))
 
-        materialSearchView.onSearchTextChanged = { text ->
-            println(text)
-            if (text.isEmpty()) suggestionAdapter.submitList(emptyList())
-            else {
-                val list = Lists.USERS.filter { it.name.contains(text, ignoreCase = true) }
-                suggestionAdapter.submitList(list)
-            }
-        }
-
-        materialSearchView.onSearchSubmit = {
-            println(it)
-        }
-
         @Suppress("UNCHECKED_CAST")
-        materialSearchView.searchSuggestionAdapter = suggestionAdapter as ListAdapter<Nothing, RecyclerView.ViewHolder>
+        val suggestionAdapter = SuggestionAdapter(object : SuggestionAdapter.OnClickListener {
+            override fun onClick(user: User, position: Int) {
+                toastShort("onClick: ${user.name}")
+            }
 
-        recyclerViewItems.apply {
-            itemMargin(8.dp())
-            layoutManager = LinearLayoutManager(context)
-            adapter = setupUserAdapter(Lists.USERS, SearchTheme.LIGHT)
+            override fun onLongClick(user: User, position: Int) {
+                toastShort("onClick: ${user.name}")
+            }
+
+        }, SearchTheme.LIGHT) as ListAdapter<Any?, RecyclerView.ViewHolder>
+
+
+        with(materialSearchView) {
+            onSearchTextChanged = { query -> println(query) }
+            onSearchSubmit = { println(it) }
+            onSearchSuggestionFilter = { query ->
+                if (query.isEmpty()) suggestionAdapter.submitList(emptyList())
+                else {
+                    val list = Lists.USERS.filter { it.name.contains(query, ignoreCase = true) }
+                    suggestionAdapter.submitList(list)
+                }
+            }
+            searchSuggestionAdapter = suggestionAdapter
         }
+
+        setupRecyclerView(recyclerViewUsers, SearchTheme.LIGHT)
 
         /*   menuMaterialSearchView.setAdapter(setupSuggestionAdapter(Lists.USERS, SearchTheme.LIGHT), Lists.SUGGESTIONS)
 
@@ -71,19 +65,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setupUserAdapter(
-        userList: List<User>,
-        searchTheme: SearchTheme
-    ): ListAdapter<User, UserAdapter.UserViewHolder> {
-        val itemAdapter: ListAdapter<User, UserAdapter.UserViewHolder> =
-            UserAdapter(object : UserAdapter.OnClickListener {
-                override fun onClick(user: User, position: Int) = toastShort("onClick: ${user.name}")
-                override fun onLongClick(user: User, position: Int) = toastShort("onLongClick: ${user.name}")
-            }, searchTheme)
-
-        itemAdapter.submitList(userList)
-        return itemAdapter
-    }
 /*
     private fun setupSuggestionAdapter(
         userList: List<User>,
@@ -160,6 +141,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+ */
+
     private lateinit var menu: Menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         this.menu = menu
@@ -170,11 +154,13 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.search -> menuMaterialSearchView.open()
-            R.id.changeTheme -> changeMaterialSearchViewStyle(menuMaterialSearchView)
+            R.id.search -> {
+            }//menuMaterialSearchView.open()
+            R.id.changeTheme -> {
+            }//changeMaterialSearchViewStyle(menuMaterialSearchView)
         }
         return super.onOptionsItemSelected(item)
     }
-*/
+
 }
 

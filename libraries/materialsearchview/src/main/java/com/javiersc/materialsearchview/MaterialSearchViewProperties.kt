@@ -11,10 +11,13 @@ interface MaterialSearchViewProperties {
     var searchBackgroundOpenDelay: Long
     var searchBackgroundCloseDuration: Long
     var searchBackgroundCloseDelay: Long
+    var searchBackgroundAnimation: SearchBackgroundAnimation
 
-    var searchCardBackgroundAnimation: SearchBackgroundAnimation
+    var searchCardsParentTranslationY: Float
+
     var searchCardBackgroundColor: Int
     var searchCardCornerRadius: Float
+    var searchCardElevation: Float
 
     var searchUpIcon: Drawable
     var searchUpIconDuration: Long

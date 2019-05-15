@@ -61,22 +61,22 @@
                     tools:src="@drawable/ic_menu_black_24dp" />
 
                 <com.javiersc.searchtext.SearchTextView
-                    android:singleLine="true"
-                    android:inputType="text"
-                    android:imeOptions="actionSearch|flagNoExtractUi"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:includeFontPadding="false"
                     android:id="@+id/searchTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/searchCardTextMarginLeft"
                     android:layout_marginEnd="@dimen/searchCardTextMarginRight"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/roboto_medium"
                     android:hint="@string/search_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageButtonUp"
+                    android:imeOptions="actionSearch|flagNoExtractUi"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageButtonUp"
-                    app:layout_constraintTop_toTopOf="@+id/imageButtonUp" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

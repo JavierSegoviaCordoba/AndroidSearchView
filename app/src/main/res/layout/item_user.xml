@@ -11,14 +11,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCompany"
         app:layout_constraintTop_toBottomOf="@+id/textViewCompany">
 
         <com.google.android.material.card.MaterialCardView
-            android:padding="8dp"
-            android:layout_margin="8dp"
+            android:layout_margin="16dp"
             app:cardElevation="8dp"
             app:cardCornerRadius="40dp"
             android:id="@+id/materialCardView"
@@ -46,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:ellipsize="end"
             android:maxLines="1"
             app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
@@ -57,26 +55,12 @@
             tools:text="Michael Doe" />
 
         <TextView
-            android:id="@+id/textViewEmail"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="14sp"
-            android:translationY="-8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/textViewName"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName"
-            tools:text="michaeldoe@example.com" />
-
-        <TextView
             android:id="@+id/textViewCompany"
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingBottom="1dp"
@@ -85,6 +69,23 @@
             app:layout_constraintLeft_toRightOf="@+id/textViewName"
             app:layout_constraintRight_toRightOf="parent"
             tools:text="Google LLC" />
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:translationY="-16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/textViewName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName"
+            tools:text="michaeldoe@example.com" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

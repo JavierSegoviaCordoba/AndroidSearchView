@@ -15,7 +15,7 @@ fun <T> setupOpen(msv: MaterialSearchView<T>) = with(msv) {
 
     imageButtonUp.drawerArrow(context, searchUpIconDelay, searchUpIconDuration, inverse = false)
 
-    when (searchCardBackgroundAnimation) {
+    when (searchBackgroundAnimation) {
         SearchBackgroundAnimation.RIPPLE -> {
             cardViewBackground.show(
                 centerX = touchPoint.x,
@@ -36,7 +36,7 @@ fun <T> setupClose(msv: MaterialSearchView<T>) = with(msv) {
 
     imageButtonUp.drawerArrow(context, searchUpIconDelay, searchUpIconDuration, inverse = true)
 
-    when (searchCardBackgroundAnimation) {
+    when (searchBackgroundAnimation) {
         SearchBackgroundAnimation.RIPPLE -> {
             val location = IntArray(2)
             imageButtonUp.getLocationOnScreen(location)
@@ -58,23 +58,34 @@ fun <T> setupClose(msv: MaterialSearchView<T>) = with(msv) {
     searchTextView.text?.let { editable ->
         val total = searchTextEnterDuration + searchTextEnterDelay + searchTextExitDuration + searchTextExitDelay
         if (editable.isNotEmpty()) {
-            val temp = onSearchTextChanged
+            val tempText = onSearchTextChanged
+            val tempFilter = onSearchSuggestionFilter
             onSearchTextChanged = null
+            onSearchSuggestionFilter = null
             searchSuggestionAdapter?.submitList(emptyList())
             when (searchTextAnimation) {
                 SearchTextAnimation.TYPE -> {
                     searchTextView.deleteTextAnimated(searchTextEnterDuration, searchTextEnterDelay)
                     searchTextView.addTextAnimated(searchTextHint, searchTextExitDuration, searchTextExitDelay)
-                    postDelayed({ onSearchTextChanged = temp }, total)
+                    postDelayed({
+                        onSearchTextChanged = tempText
+                        onSearchSuggestionFilter = tempFilter
+                    }, total)
                 }
                 SearchTextAnimation.FADE -> {
                     searchTextView.fadeOut(searchTextEnterDuration, searchTextEnterDelay)
                     searchTextView.fadeIn(searchTextExitDuration, searchTextExitDelay)
-                    postDelayed({ onSearchTextChanged = temp }, total)
+                    postDelayed({
+                        onSearchTextChanged = tempText
+                        onSearchSuggestionFilter = tempFilter
+                    }, total)
                 }
                 SearchTextAnimation.NONE -> {
                     searchTextView.setText("")
-                    postDelayed({ onSearchTextChanged = temp }, 0)
+                    postDelayed({
+                        onSearchTextChanged = tempText
+                        onSearchSuggestionFilter = tempFilter
+                    }, 0)
                 }
             }
         }

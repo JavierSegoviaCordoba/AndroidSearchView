@@ -1,4 +1,4 @@
-package com.javiersc.androidsearchview.ui.util
+package com.javiersc.androidsearchview.ui.dummy
 
 import com.javiersc.androidsearchview.R
 import com.javiersc.androidsearchview.model.User
@@ -18,5 +18,4 @@ object Lists {
         User(R.drawable.robert_jackson, "Rober Jackson", "Apple Inc", "robertjackson@email.com"),
         User(R.drawable.michael_robinson, "Michael Robinson", "Intel Corp", "michaelrobinson@email.com")
     )
-    val SUGGESTIONS = USERS.map { it.name }
 }

@@ -62,6 +62,7 @@ class MaterialSearchView<T> @JvmOverloads constructor(
             field = value.also {
                 searchTextView.setText(it)
                 onSearchTextChanged?.invoke(it)
+                onSearchSuggestionFilter?.invoke(it)
             }
         }
     override var onSearchTextChanged: ((text: String) -> Unit)? = null
@@ -81,21 +82,41 @@ class MaterialSearchView<T> @JvmOverloads constructor(
             field = value.also { searchTextView.setHintTextColor(it) }
         }
 
-    override var searchTextFont: Typeface = context.font(R.font.montserrat_medium)
+    override var searchTextFont: Typeface = context.font(R.font.roboto_medium)
         set(value) {
             field = value.also { searchTextView.typeface = it }
         }
 
-    override var searchTextAnimation: SearchTextAnimation = SearchTextAnimation.FADE
+    override var searchTextTranslationY: Float = 0f
+        set(value) {
+            field = value.also { searchTextView.translationY = it }
+        }
+    override var searchTextAnimation: SearchTextAnimation = SearchTextAnimation.TYPE
     override var searchTextEnterDuration: Long = 350
     override var searchTextEnterDelay: Long = 0
     override var searchTextExitDuration: Long = 350
     override var searchTextExitDelay: Long = 350
 
+    override var searchTextMarginLeft: Float = context.dimen(R.dimen.searchCardTextMarginLeft)
+        set(value) {
+            field = value.also { searchTextView.marginLeft(it.toInt()) }
+        }
+    override var searchTextMarginTop: Float = context.dimen(R.dimen.searchCardTextMarginRight)
+        set(value) {
+            field = value.also { searchTextView.marginTop(it.toInt()) }
+        }
+    override var searchTextMarginRight: Float = 0f
+        set(value) {
+            field = value.also { searchTextView.marginRight(it.toInt()) }
+        }
+    override var searchTextMarginBottom: Float = 0f
+        set(value) {
+            field = value.also { searchTextView.marginBottom(it.toInt()) }
+        }
     override var onSearchSubmit: ((String?) -> Unit)? = null
     override var onKeyboardDismiss: (() -> Unit)? = null
 
-    // BACKGROUND
+    //BACKGROUND
     override var searchBackgroundColor: Int = context.color(R.color.searchBackgroundLight)
         set(value) {
             field = value.also { cardViewBackground.setCardBackgroundColor(it) }
@@ -109,7 +130,13 @@ class MaterialSearchView<T> @JvmOverloads constructor(
     override var searchBackgroundOpenDelay: Long = 0
     override var searchBackgroundCloseDuration: Long = 500
     override var searchBackgroundCloseDelay: Long = 0
-    override var searchCardBackgroundAnimation: SearchBackgroundAnimation = SearchBackgroundAnimation.FADE
+    override var searchBackgroundAnimation: SearchBackgroundAnimation = SearchBackgroundAnimation.FADE
+
+    //CARDS PARENT
+    override var searchCardsParentTranslationY: Float = 0f
+        set(value) {
+            field = value.also { constrainLayoutParent.translationY = it }
+        }
 
     //CARD BACKGROUND
     override var searchCardBackgroundColor: Int = context.color(R.color.searchCardBackgroundLight)
@@ -122,6 +149,11 @@ class MaterialSearchView<T> @JvmOverloads constructor(
             field = value.also { cardViewSearch.radius = it }
         }
 
+    override var searchCardElevation: Float = context.dimen(R.dimen.cardViewSearchElevation)
+        set(value) {
+            field = value.also { cardViewSearch.cardElevation = it }
+        }
+
     //ICON
     override var searchUpIcon: Drawable = DrawerArrowDrawable(context)
         set(value) {
@@ -131,7 +163,7 @@ class MaterialSearchView<T> @JvmOverloads constructor(
     override var searchUpIconDelay: Long = 0
     override var onSearchUpIconListener: (() -> Unit)? = null
 
-    override var searchSuggestionAdapter: ListAdapter<out T, RecyclerView.ViewHolder>? = null
+    override var searchSuggestionAdapter: ListAdapter<in T, RecyclerView.ViewHolder>? = null
         set(value) {
             field = value
             recyclerViewSuggestionList.apply {
@@ -140,6 +172,7 @@ class MaterialSearchView<T> @JvmOverloads constructor(
                 adapter = value
             }
         }
+    override var onSearchSuggestionFilter: ((text: String) -> Unit)? = null
 
     //OPEN-CLOSE
     override var isOpen: Boolean = false

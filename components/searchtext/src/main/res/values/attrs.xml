@@ -7,6 +7,16 @@
     <attr name="searchTextHint" format="string" />
     <attr name="searchTextHintColor" format="color" />
     <attr name="searchTextFont" format="reference" />
+    <attr name="searchTextTranslationY" format="dimension" />
+    <attr name="searchTextAnimation" format="enum">
+        <enum name="NONE" value="0" />
+        <enum name="TYPE" value="1" />
+        <enum name="FADE" value="2" />
+    </attr>
+    <attr name="searchTextEnterDuration" format="integer" />
+    <attr name="searchTextEnterDelay" format="integer" />
+    <attr name="searchTextExitDuration" format="integer" />
+    <attr name="searchTextExitDelay" format="integer" />
     <attr name="searchTextMarginLeft" format="dimension" />
     <attr name="searchTextMarginTop" format="dimension" />
     <attr name="searchTextMarginRight" format="dimension" />

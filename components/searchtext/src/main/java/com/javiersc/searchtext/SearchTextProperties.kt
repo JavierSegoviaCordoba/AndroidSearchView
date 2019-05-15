@@ -10,11 +10,17 @@ interface SearchTextProperties {
     var searchTextHint: String
     var searchTextHintColor: Int
     var searchTextFont: Typeface
+    var searchTextTranslationY: Float
     var searchTextAnimation: SearchTextAnimation
     var searchTextEnterDuration: Long
     var searchTextEnterDelay: Long
     var searchTextExitDuration: Long
     var searchTextExitDelay: Long
+    var searchTextMarginLeft: Float
+    var searchTextMarginTop: Float
+    var searchTextMarginRight: Float
+    var searchTextMarginBottom: Float
+
 
     var onSearchSubmit: ((String?) -> Unit)?
     var onKeyboardDismiss: (() -> Unit)?

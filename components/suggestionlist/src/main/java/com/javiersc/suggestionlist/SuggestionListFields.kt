@@ -4,5 +4,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 interface SuggestionListFields<T> {
-    var searchSuggestionAdapter: ListAdapter<out T, RecyclerView.ViewHolder>?
+    var searchSuggestionAdapter: ListAdapter<in T, RecyclerView.ViewHolder>?
+    var onSearchSuggestionFilter: ((text: String) -> Unit)?
 }
