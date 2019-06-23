@@ -21,9 +21,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:parentActivityName=".ui.MainActivity"
             android:name=".ui.CollapsingActivity"
-            android:label="@string/title_activity_collapsing" />
+            android:label="@string/title_activity_collapsing"
+            android:parentActivityName=".ui.MainActivity" />
     </application>
 
 </manifest>

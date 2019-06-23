@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="searchTextMarginLeft">16dp</dimen>
+    <dimen name="searchTextMarginTop">0dp</dimen>
+    <dimen name="searchTextMarginRight">16dp</dimen>
+    <dimen name="searchTextMarginBottom">0dp</dimen>
+    <dimen name="searchTextTranslationY">0dp</dimen>
+
+    <integer name="searchTextEnterDuration">350</integer>
+    <integer name="searchTextEnterDelay">0</integer>
+    <integer name="searchTextExitDuration">350</integer>
+    <integer name="searchTextExitDelay">350</integer>
+
+
+    <integer name="searchBackgroundOpenDuration">500</integer>
+    <integer name="searchBackgroundOpenDelay">0</integer>
+    <integer name="searchBackgroundCloseDuration">500</integer>
+    <integer name="searchBackgroundCloseDelay">0</integer>
+
+    <dimen name="searchCardsParentTranslationY">0dp</dimen>
+
+
+    <dimen name="searchUpIconMarginLeft">16dp</dimen>
+    <integer name="searchUpIconDuration">300</integer>
+    <integer name="searchUpIconDelay">300</integer>
+
+
+    <dimen name="searchCardMargin">4dp</dimen>
+    <dimen name="searchCardMarginLeft">4dp</dimen>
+    <dimen name="searchCardMarginTop">4dp</dimen>
+    <dimen name="searchCardMarginRight">4dp</dimen>
+    <dimen name="searchCardMarginBottom">4dp</dimen>
+    <dimen name="searchCardTranslationY">0dp</dimen>
+
+    <dimen name="cardViewSearchCornerRadius">2dp</dimen>
+    <dimen name="cardViewSearchElevation">8dp</dimen>
+
+    <dimen name="searchSuggestionItemMargin">16dp</dimen>
+    <dimen name="searchSuggestionCardMarginLeft">4dp</dimen>
+    <dimen name="searchSuggestionCardMarginTop">0dp</dimen>
+    <dimen name="searchSuggestionCardMarginRight">4dp</dimen>
+    <dimen name="searchSuggestionCardMarginBottom">4dp</dimen>
+
+    <dimen name="searchSuggestionCardElevation">8dp</dimen>
+    <dimen name="searchSuggestionCardRadius">2dp</dimen>
+    <dimen name="searchSuggestionCardTranslationY">4dp</dimen>
+</resources>

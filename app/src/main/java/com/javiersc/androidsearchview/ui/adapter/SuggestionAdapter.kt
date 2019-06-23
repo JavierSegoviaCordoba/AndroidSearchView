@@ -1,6 +1,5 @@
 package com.javiersc.androidsearchview.ui.adapter
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,30 +8,34 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.javiersc.androidsearchview.R
 import com.javiersc.androidsearchview.model.User
-import com.javiersc.extensions.color
-import com.javiersc.extensions.drawable
-import com.javiersc.searchtheme.SearchTheme
+import com.javiersc.materialsearchview.constants.SearchTheme
+import com.javiersc.materialsearchview.extensions.color
+import com.javiersc.materialsearchview.extensions.drawable
 import kotlinx.android.synthetic.main.item_suggestion.view.*
 
-class SuggestionAdapter(private val onClickListener: OnClickListener, private val searchTheme: SearchTheme) :
-    ListAdapter<User, SuggestionAdapter.SuggestionViewHolder>(TaskDiffCallback()) {
+
+class SuggestionAdapter : ListAdapter<User, SuggestionAdapter.SuggestionViewHolder>(TaskDiffCallback()) {
+
+    var onClick: ((User, Int) -> Unit)? = null
+    var onLongClick: ((User, Int) -> Unit)? = null
+
+    var searchTheme: SearchTheme = SearchTheme.LIGHT
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestionViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val viewHolder = inflater.inflate(R.layout.item_suggestion, parent, false)
-        return SuggestionViewHolder(viewHolder, onClickListener)
+        return SuggestionViewHolder(viewHolder)
     }
 
     override fun onBindViewHolder(holder: SuggestionViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    inner class SuggestionViewHolder(itemView: View, private val onClickListener: OnClickListener) :
-        RecyclerView.ViewHolder(itemView) {
+    inner class SuggestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(user: User) = with(itemView) {
-            setOnClickListener { onClickListener.onClick(user, adapterPosition) }
-            setOnLongClickListener { onClickListener.onLongClick(user, adapterPosition).let { true } }
+            setOnClickListener { onClick?.invoke(user, adapterPosition) }
+            setOnLongClickListener { onLongClick?.invoke(user, adapterPosition).let { true } }
 
             if (searchTheme == SearchTheme.LIGHT) {
                 textViewName.setTextColor(context.color(R.color.searchTextLight))
@@ -47,11 +50,6 @@ class SuggestionAdapter(private val onClickListener: OnClickListener, private va
             textViewName.text = user.name
             textViewEmail.text = user.email
         }
-    }
-
-    interface OnClickListener {
-        fun onClick(user: User, position: Int)
-        fun onLongClick(user: User, position: Int)
     }
 
     class TaskDiffCallback : DiffUtil.ItemCallback<User>() {

@@ -1,9 +1,0 @@
-<resources>
-
-    <color name="searchTextLight">#3B4043</color>
-    <color name="searchTextHintLight">#81858C</color>
-
-    <color name="searchTextDark">#F4F4F4</color>
-    <color name="searchTextHintDark">#75787D</color>
-
-</resources>

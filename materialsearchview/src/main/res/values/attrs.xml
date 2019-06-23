@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MaterialSearchView">
+
+        <attr name="searchType" format="enum">
+            <enum name="NORMAL" value="0" />
+            <enum name="MENU" value="1" />
+        </attr>
+
+        <attr name="searchTheme" format="enum">
+            <enum name="LIGHT" value="0" />
+            <enum name="DARK" value="1" />
+        </attr>
+
+        <attr name="searchText" format="string" />
+        <attr name="searchTextColor" format="color" />
+        <attr name="searchTextHint" format="string" />
+        <attr name="searchTextHintColor" format="color" />
+        <attr name="searchTextFont" format="reference" />
+        <attr name="searchTextMarginLeft" format="dimension" />
+        <attr name="searchTextMarginTop" format="dimension" />
+        <attr name="searchTextMarginRight" format="dimension" />
+        <attr name="searchTextMarginBottom" format="dimension" />
+        <attr name="searchTextTranslationY" format="dimension" />
+        <attr name="searchTextAnimation" format="enum">
+            <enum name="NONE" value="0" />
+            <enum name="TYPE" value="1" />
+            <enum name="FADE" value="2" />
+        </attr>
+        <attr name="searchTextEnterDuration" format="integer" />
+        <attr name="searchTextEnterDelay" format="integer" />
+        <attr name="searchTextExitDuration" format="integer" />
+        <attr name="searchTextExitDelay" format="integer" />
+
+        <attr name="searchBackgroundColor" format="color" />
+        <attr name="searchBackgroundRippleColor" format="color" />
+        <attr name="searchBackgroundOpenDuration" format="integer" />
+        <attr name="searchBackgroundOpenDelay" format="integer" />
+        <attr name="searchBackgroundCloseDuration" format="integer" />
+        <attr name="searchBackgroundCloseDelay" format="integer" />
+        <attr name="searchBackgroundAnimation" format="enum">
+            <enum name="RIPPLE" value="0" />
+            <enum name="FADE" value="1" />
+        </attr>
+
+        <attr name="searchCardsParentTranslationY" format="integer" />
+
+        <attr name="searchCardBackgroundColor" format="color" />
+        <attr name="searchCardCornerRadius" format="dimension" />
+        <attr name="searchCardElevation" format="dimension" />
+        <attr name="searchCardMarginLeft" format="dimension" />
+        <attr name="searchCardMarginTop" format="dimension" />
+        <attr name="searchCardMarginRight" format="dimension" />
+        <attr name="searchCardMarginBottom" format="dimension" />
+        <attr name="searchCardTranslationY" format="dimension" />
+
+        <attr name="searchUpIcon" format="reference" />
+        <attr name="searchUpIconColor" format="color" />
+        <attr name="searchUpIconMarginLeft" format="dimension" />
+        <attr name="searchUpIconDuration" format="integer" />
+        <attr name="searchUpIconDelay" format="integer" />
+
+        <attr name="searchSuggestionCardBackgroundColor" format="color" />
+        <attr name="searchSuggestionItemMargin" format="dimension" />
+        <attr name="searchSuggestionCardCornerRadius" format="dimension" />
+        <attr name="searchSuggestionCardElevation" format="dimension" />
+        <attr name="searchSuggestionCardMarginLeft" format="dimension" />
+        <attr name="searchSuggestionCardMarginTop" format="dimension" />
+        <attr name="searchSuggestionCardMarginRight" format="dimension" />
+        <attr name="searchSuggestionCardMarginBottom" format="dimension" />
+        <attr name="searchSuggestionCardTranslationY" format="dimension" />
+
+    </declare-styleable>
+
+</resources>

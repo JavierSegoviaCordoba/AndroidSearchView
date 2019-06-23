@@ -1,6 +1,5 @@
 package com.javiersc.androidsearchview.ui.adapter
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,30 +8,35 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.javiersc.androidsearchview.R
 import com.javiersc.androidsearchview.model.User
-import com.javiersc.extensions.color
-import com.javiersc.extensions.drawable
-import com.javiersc.searchtheme.SearchTheme
+import com.javiersc.materialsearchview.constants.SearchTheme
+import com.javiersc.materialsearchview.extensions.color
+import com.javiersc.materialsearchview.extensions.drawable
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class UserAdapter(private val onClickListener: OnClickListener, private val searchTheme: SearchTheme) :
-    ListAdapter<User, UserAdapter.UserViewHolder>(TaskDiffCallback()) {
+
+class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(TaskDiffCallback()) {
+
+    var onClick: ((User, Int) -> Unit)? = null
+    var onLongClick: ((User, Int) -> Unit)? = null
+
+    var searchTheme: SearchTheme = SearchTheme.LIGHT
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val viewHolder = inflater.inflate(R.layout.item_user, parent, false)
-        return UserViewHolder(viewHolder, onClickListener)
+        return UserViewHolder(viewHolder)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    inner class UserViewHolder(itemView: View, private val onClickListener: OnClickListener) :
+    inner class UserViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 
         fun bind(user: User) = with(itemView) {
-            setOnClickListener { onClickListener.onClick(user, adapterPosition) }
-            setOnLongClickListener { onClickListener.onLongClick(user, adapterPosition).let { true } }
+            setOnClickListener { onClick?.invoke(user, adapterPosition) }
+            setOnLongClickListener { onLongClick?.invoke(user, adapterPosition).let { true } }
 
             if (searchTheme == SearchTheme.LIGHT) {
                 cardView.setCardBackgroundColor(context.color(R.color.searchCardBackgroundLight))
@@ -55,10 +59,6 @@ class UserAdapter(private val onClickListener: OnClickListener, private val sear
         }
     }
 
-    interface OnClickListener {
-        fun onClick(user: User, position: Int)
-        fun onLongClick(user: User, position: Int)
-    }
 
     class TaskDiffCallback : DiffUtil.ItemCallback<User>() {
 

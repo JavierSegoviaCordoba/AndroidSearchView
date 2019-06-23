@@ -9,11 +9,11 @@
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
-        app:cardElevation="8dp"
-        app:cardCornerRadius="20dp"
         android:id="@+id/materialCardView"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,20 +35,20 @@
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
         app:layout_constraintLeft_toRightOf="@+id/materialCardView"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialCardView"
-        tools:text="Michael Doe"
-        android:layout_marginStart="16dp" />
+        tools:text="Michael Doe" />
 
     <TextView
-        android:includeFontPadding="false"
         android:id="@+id/textViewEmail"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:includeFontPadding="false"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
         app:layout_constraintLeft_toRightOf="@+id/materialCardView"

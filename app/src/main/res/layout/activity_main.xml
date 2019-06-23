@@ -8,11 +8,11 @@
     tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:focusableInTouchMode="true"
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
         android:theme="@style/ThemeOverlay.AppCompat"
         android:translationZ="4dp"
         app:layout_constraintEnd_toEndOf="parent"

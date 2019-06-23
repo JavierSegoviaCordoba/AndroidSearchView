@@ -16,12 +16,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewCompany">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_margin="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="40dp"
             android:id="@+id/materialCardView"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -74,8 +74,8 @@
             android:id="@+id/textViewEmail"
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="0dp"
-            android:layout_marginEnd="16dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textSize="14sp"
