@@ -1,3 +1,5 @@
+import com.javiersc.plugins.Modules
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -17,12 +19,19 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "${JavaVersion.VERSION_1_8}"
     }
 }
 
@@ -37,6 +46,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.9.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.9.0")
 
-    implementation(project(":materialsearchview"))
-    implementation(project(":toolbarsearchview"))
+    implementation(project(Modules.material))
+    implementation(project(Modules.toolbar))
 }

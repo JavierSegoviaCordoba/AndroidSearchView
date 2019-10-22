@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.javiersc.androidsearchview.R
+import com.javiersc.androidsearchview.material.constants.SearchTheme
+import com.javiersc.androidsearchview.material.extensions.color
 import com.javiersc.androidsearchview.ui.extension.colorize
 import com.javiersc.androidsearchview.ui.setups.setupRecyclerView
-import com.javiersc.materialsearchview.constants.SearchTheme
-import com.javiersc.materialsearchview.extensions.color
 import kotlinx.android.synthetic.main.activity_appbar.*
 
 class AppBarActivity : AppCompatActivity() {

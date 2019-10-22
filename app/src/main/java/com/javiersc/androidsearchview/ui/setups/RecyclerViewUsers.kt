@@ -4,11 +4,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.javiersc.androidsearchview.App
+import com.javiersc.androidsearchview.material.constants.SearchTheme
 import com.javiersc.androidsearchview.model.User
 import com.javiersc.androidsearchview.ui.adapter.UserAdapter
 import com.javiersc.androidsearchview.ui.dummy.Lists
 import com.javiersc.androidsearchview.ui.extension.toastShort
-import com.javiersc.materialsearchview.constants.SearchTheme
 
 
 fun setupRecyclerView(recyclerView: RecyclerView, searchTheme: SearchTheme) {

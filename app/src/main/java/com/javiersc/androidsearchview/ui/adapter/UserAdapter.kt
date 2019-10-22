@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.javiersc.androidsearchview.R
+import com.javiersc.androidsearchview.material.constants.SearchTheme
+import com.javiersc.androidsearchview.material.extensions.color
+import com.javiersc.androidsearchview.material.extensions.drawable
 import com.javiersc.androidsearchview.model.User
-import com.javiersc.materialsearchview.constants.SearchTheme
-import com.javiersc.materialsearchview.extensions.color
-import com.javiersc.materialsearchview.extensions.drawable
 import kotlinx.android.synthetic.main.item_user.view.*
 
 

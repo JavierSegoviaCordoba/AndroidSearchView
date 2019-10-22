@@ -7,12 +7,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.javiersc.androidsearchview.R
+import com.javiersc.androidsearchview.material.constants.SearchTheme
+import com.javiersc.androidsearchview.material.constants.SearchType
 import com.javiersc.androidsearchview.ui.adapter.SuggestionAdapter
 import com.javiersc.androidsearchview.ui.dummy.Lists
 import com.javiersc.androidsearchview.ui.extension.toastShort
 import com.javiersc.androidsearchview.ui.setups.changeMaterialSearchViewTheme
-import com.javiersc.materialsearchview.constants.SearchTheme
-import com.javiersc.materialsearchview.constants.SearchType
 import kotlinx.android.synthetic.main.activity_main.*
 
 

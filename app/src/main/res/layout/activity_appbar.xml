@@ -31,7 +31,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.javiersc.materialsearchview.MaterialSearchView xmlns:msv="http://schemas.android.com/apk/res-auto"
+    <com.javiersc.androidsearchview.material.MaterialSearchView xmlns:msv="http://schemas.android.com/apk/res-auto"
         android:id="@+id/materialSearchView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

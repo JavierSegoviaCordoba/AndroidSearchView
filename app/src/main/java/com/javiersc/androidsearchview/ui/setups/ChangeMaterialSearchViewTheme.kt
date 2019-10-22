@@ -7,11 +7,11 @@ import android.view.Menu
 import android.view.View
 import androidx.core.view.forEach
 import com.javiersc.androidsearchview.R
+import com.javiersc.androidsearchview.material.MaterialSearchView
+import com.javiersc.androidsearchview.material.constants.SearchTheme
+import com.javiersc.androidsearchview.material.extensions.color
 import com.javiersc.androidsearchview.ui.adapter.SuggestionAdapter
 import com.javiersc.androidsearchview.ui.extension.colorize
-import com.javiersc.materialsearchview.MaterialSearchView
-import com.javiersc.materialsearchview.constants.SearchTheme
-import com.javiersc.materialsearchview.extensions.color
 import kotlinx.android.synthetic.main.activity_main.*
 
 
