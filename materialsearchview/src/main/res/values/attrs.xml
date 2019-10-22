@@ -44,11 +44,15 @@
             <enum name="FADE" value="1" />
         </attr>
 
-        <attr name="searchCardsParentTranslationY" format="integer" />
+        <attr name="searchCardsParentTranslationY" format="dimension" />
 
         <attr name="searchCardBackgroundColor" format="color" />
+        <attr name="searchCardHeight" format="dimension" />
         <attr name="searchCardCornerRadius" format="dimension" />
         <attr name="searchCardElevation" format="dimension" />
+        <attr name="searchCardStrokeWidth" format="dimension" />
+        <attr name="searchCardStrokeColor" format="color" />
+        <attr name="searchCardShadowColor" format="color" />
         <attr name="searchCardMarginLeft" format="dimension" />
         <attr name="searchCardMarginTop" format="dimension" />
         <attr name="searchCardMarginRight" format="dimension" />
@@ -60,6 +64,20 @@
         <attr name="searchUpIconMarginLeft" format="dimension" />
         <attr name="searchUpIconDuration" format="integer" />
         <attr name="searchUpIconDelay" format="integer" />
+
+        <attr name="searchClearIconEnabled" format="boolean" />
+        <attr name="searchClearIcon" format="reference" />
+        <attr name="searchClearIconColor" format="color" />
+
+        <attr name="searchMicIconEnabled" format="boolean" />
+        <attr name="searchMicIcon" format="reference" />
+        <attr name="searchMicIconColor" format="color" />
+
+        <attr name="searchUserIconEnabled" format="boolean" />
+        <attr name="searchUserIcon" format="reference" />
+        <attr name="searchUserIconColor" format="color" />
+        <attr name="searchUserIconBorderWidth" format="dimension" />
+        <attr name="searchUserIconBorderColor" format="color" />
 
         <attr name="searchSuggestionCardBackgroundColor" format="color" />
         <attr name="searchSuggestionItemMargin" format="dimension" />

@@ -9,13 +9,10 @@ import com.javiersc.androidsearchview.ui.adapter.UserAdapter
 import com.javiersc.androidsearchview.ui.dummy.Lists
 import com.javiersc.androidsearchview.ui.extension.toastShort
 import com.javiersc.materialsearchview.constants.SearchTheme
-import com.javiersc.materialsearchview.extensions.dp
-import com.javiersc.materialsearchview.extensions.itemMargin
 
 
 fun setupRecyclerView(recyclerView: RecyclerView, searchTheme: SearchTheme) {
     recyclerView.apply {
-        itemMargin(8.dp)
         layoutManager = LinearLayoutManager(context)
         adapter = setupUserAdapter(Lists.USERS, searchTheme)
     }

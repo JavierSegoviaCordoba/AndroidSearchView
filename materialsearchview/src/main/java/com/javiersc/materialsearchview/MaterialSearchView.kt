@@ -2,11 +2,15 @@ package com.javiersc.materialsearchview
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.util.AttributeSet
 import android.view.MenuItem
 import android.widget.FrameLayout
+import androidx.annotation.RequiresApi
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -50,6 +54,7 @@ class MaterialSearchView<T> @JvmOverloads constructor(
         set(value) {
             field = value.also {
                 searchTextView.setText(it)
+                searchTextView.setSelection(it.length)
                 onSearchTextChanged?.invoke(it)
                 onSearchSuggestionFilter?.invoke(it)
             }
@@ -68,7 +73,7 @@ class MaterialSearchView<T> @JvmOverloads constructor(
         set(value) {
             field = value.also { searchTextView.setHintTextColor(it) }
         }
-    var searchTextFont: Typeface = Typeface.DEFAULT
+    var searchTextFont: Typeface = context.font(R.font.google_sans_regular)
         set(value) {
             field = value.also { searchTextView.typeface = it }
         }
@@ -128,13 +133,31 @@ class MaterialSearchView<T> @JvmOverloads constructor(
         set(value) {
             field = value.also { cardViewSearch.setCardBackgroundColor(it) }
         }
-    var searchCardCornerRadius: Float = context.dimen(R.dimen.cardViewSearchCornerRadius)
+    var searchCardRadius: Float = context.dimen(R.dimen.searchCardRadius)
         set(value) {
             field = value.also { cardViewSearch.radius = it }
         }
-    var searchCardElevation: Float = context.dimen(R.dimen.cardViewSearchElevation)
+    var searchCardElevation: Float = context.dimen(R.dimen.searchCardElevation)
         set(value) {
             field = value.also { cardViewSearch.cardElevation = it }
+        }
+    @RequiresApi(28)
+    var searchCardShadowColor: Int = Color.TRANSPARENT
+        set(value) {
+            field = value.also {
+                if (Build.VERSION.SDK_INT >= 28) {
+                    cardViewSearch.outlineAmbientShadowColor = it
+                    cardViewSearch.outlineSpotShadowColor = it
+                }
+            }
+        }
+    var searchCardStrokeWidth: Float = context.dimen(R.dimen.searchCardStrokeWidth)
+        set(value) {
+            field = value.also { cardViewSearch.strokeWidth = it.toInt() }
+        }
+    var searchCardStrokeColor: Int = Color.TRANSPARENT
+        set(value) {
+            field = value.also { cardViewSearch.strokeColor = it }
         }
     var searchCardMarginLeft: Float = context.dimen(R.dimen.searchCardMarginLeft)
         set(value) {
@@ -152,14 +175,18 @@ class MaterialSearchView<T> @JvmOverloads constructor(
         set(value) {
             field = value.also { cardViewSearch.marginBottom(it.toInt()) }
         }
+    var searchCardHeight: Int = context.actionBarHeight() - searchCardMarginTop.toInt() - searchCardMarginBottom.toInt()
+        set(value) {
+            field = value.also { cardViewSearch.setHeight(it) }
+        }
     var searchCardTranslationY: Float = context.dimen(R.dimen.searchCardTranslationY)
         set(value) {
             field = value.also { cardViewSearch.translationY = it }
         }
 
 
-    //ICON
-    var searchUpIcon: Drawable? = null
+    //ICONS
+    var searchUpIcon: Drawable? = DrawerArrowDrawable(context).apply { alpha = 255 }
         set(value) {
             field = value.also { imageButtonUp.setImageDrawable(it) }
         }
@@ -174,6 +201,56 @@ class MaterialSearchView<T> @JvmOverloads constructor(
     var searchUpIconDuration: Long = context.int(R.integer.searchUpIconDuration).toLong()
     var searchUpIconDelay: Long = context.int(R.integer.searchUpIconDelay).toLong()
     var onSearchUpIconListener: (() -> Unit)? = null
+
+    var searchClearIconEnabled: Boolean = false
+        set(value) {
+            field = value.also { if (it) imageButtonClear.visible() else imageButtonClear.gone() }
+        }
+    var searchClearIcon: Drawable? = context.drawable(R.drawable.ic_clear)
+        set(value) {
+            field = value.also { imageButtonClear.setImageDrawable(it) }
+        }
+    var searchClearIconColor: Int = context.color(R.color.searchUpIconLight)
+        set(value) {
+            field = value.also { imageButtonClear.setColorFilter(it) }
+        }
+    var onSearchClearIconListener: (() -> Unit)? = null
+
+    var searchMicIconEnabled: Boolean = false
+        set(value) {
+            field = value.also { if (it) imageButtonMic.visible() else imageButtonMic.gone() }
+        }
+    var searchMicIcon: Drawable? = context.drawable(R.drawable.ic_mic)
+        set(value) {
+            field = value.also { imageButtonMic.setImageDrawable(it) }
+        }
+    var searchMicIconColor: Int = context.color(R.color.searchUpIconLight)
+        set(value) {
+            field = value.also { imageButtonMic.setColorFilter(it) }
+        }
+    var onSearchMicIconListener: (() -> Unit)? = null
+
+    var searchUserIconEnabled: Boolean = false
+        set(value) {
+            field = value.also { if (it) cardViewUser.visible() else cardViewUser.gone() }
+        }
+    var searchUserIcon: Drawable? = context.drawable(R.drawable.ic_mic)
+        set(value) {
+            field = value.also { imageButtonUser.setImageDrawable(it) }
+        }
+    var searchUserIconColor: Int = Color.TRANSPARENT
+        set(value) {
+            field = value.also { imageButtonUser.setColorFilter(it) }
+        }
+    var searchUserIconBorderWidth: Float = 0f
+        set(value) {
+            field = value.also { cardViewUser.strokeWidth = it.toInt() }
+        }
+    var searchUserIconBorderColor: Int = Color.TRANSPARENT
+        set(value) {
+            field = value.also { cardViewUser.strokeColor = it }
+        }
+    var onSearchUserIconListener: (() -> Unit)? = null
 
     // SUGGESTION
     var searchSuggestionCardBackgroundColor: Int = context.color(R.color.searchCardBackgroundLight)
@@ -241,3 +318,4 @@ class MaterialSearchView<T> @JvmOverloads constructor(
     }
 
 }
+

@@ -24,6 +24,10 @@
             android:name=".ui.CollapsingActivity"
             android:label="@string/title_activity_collapsing"
             android:parentActivityName=".ui.MainActivity" />
+        <activity
+            android:name=".ui.AppBarActivity"
+            android:label="@string/title_activity_appbar"
+            android:parentActivityName=".ui.MainActivity" />
     </application>
 
 </manifest>

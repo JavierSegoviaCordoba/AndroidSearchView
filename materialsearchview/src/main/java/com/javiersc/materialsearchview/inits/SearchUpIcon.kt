@@ -1,7 +1,6 @@
 package com.javiersc.materialsearchview.inits
 
 import android.content.res.TypedArray
-import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import com.javiersc.materialsearchview.MaterialSearchView
 import com.javiersc.materialsearchview.R
 import com.javiersc.materialsearchview.extensions.drawable
@@ -10,7 +9,8 @@ import kotlinx.android.synthetic.main.material_search_view.view.*
 internal fun <T> initSearchUpIcon(attrs: TypedArray, msv: MaterialSearchView<T>) = with(attrs) {
 
     val searchUpIcon: Int = getResourceId(R.styleable.MaterialSearchView_searchUpIcon, 0)
-    msv.searchUpIcon = if (searchUpIcon != 0) msv.context.drawable(searchUpIcon) else null
+    if (searchUpIcon != 0) msv.context.drawable(searchUpIcon)?.let { msv.searchUpIcon = it }
+    else msv.searchUpIcon = msv.searchUpIcon
 
     val searchUpIconColor: Int = getColor(R.styleable.MaterialSearchView_searchUpIconColor, msv.searchUpIconColor)
     msv.searchUpIconColor = searchUpIconColor
@@ -27,13 +27,6 @@ internal fun <T> initSearchUpIcon(attrs: TypedArray, msv: MaterialSearchView<T>)
         getDimension(R.styleable.MaterialSearchView_searchUpIconMarginLeft, msv.searchUpIconMarginLeft)
     msv.searchUpIconMarginLeft = searchUpIconMarginLeft
 
-    with(msv) {
-        imageButtonUp.apply {
-            setImageDrawable(DrawerArrowDrawable(context))
-            setOnClickListener {
-                if (isOpen) searchTextView.clearFocus()
-                onSearchUpIconListener?.invoke()
-            }
-        }
-    }
+    msv.imageButtonUp.setOnClickListener { if (msv.isOpen) msv.close() else msv.onSearchUpIconListener?.invoke() }
+
 }

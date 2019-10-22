@@ -3,8 +3,11 @@ package com.javiersc.materialsearchview.extensions
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Typeface
+import android.view.View
+import android.view.WindowInsets
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+
 
 fun Context.color(colorId: Int) = ContextCompat.getColor(this, colorId)
 fun Context.drawable(drawableId: Int) = ContextCompat.getDrawable(this, drawableId)
@@ -16,11 +19,21 @@ fun Context.font(fontId: Int): Typeface = try {
     Typeface.DEFAULT
 }
 
-//TODO activity get real actionbar size
-fun Context.statusBarHeight(): Int? {
-    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
-    if (resourceId > 0) {
-        return this.resources.getDimensionPixelSize(resourceId)
+fun View.windowsInset(): WindowInsets? {
+    this.setOnApplyWindowInsetsListener { v, insets ->
+        return@setOnApplyWindowInsetsListener insets
     }
     return null
+}
+
+fun Context.statusBarHeight(): Int? {
+    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
+    return if (resourceId > 0) this.resources.getDimensionPixelSize(resourceId) else null
+}
+
+fun Context.actionBarHeight(): Int {
+    val styledAttributes = this.theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
+    val actionBarHeight = styledAttributes.getDimension(0, 0f).toInt()
+    styledAttributes.recycle()
+    return actionBarHeight
 }

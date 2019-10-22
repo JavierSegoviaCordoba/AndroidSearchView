@@ -3,6 +3,7 @@
     <string name="profile_image_label">Profile image</string>
     <string name="change_theme">Change Theme</string>
     <string name="title_activity_collapsing">CollapsingActivity</string>
+    <string name="title_activity_appbar">AppBarActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -92,4 +93,5 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="users">Users</string>
 </resources>

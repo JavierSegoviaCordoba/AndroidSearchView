@@ -10,9 +10,25 @@ internal fun <T> initSearchCard(attrs: TypedArray, msv: MaterialSearchView<T>) =
         getColor(R.styleable.MaterialSearchView_searchCardBackgroundColor, msv.searchCardBackgroundColor)
     msv.searchCardBackgroundColor = searchCardBackgroundColor
 
+    val searchCardHeight: Float =
+        getDimension(R.styleable.MaterialSearchView_searchCardHeight, msv.searchCardHeight.toFloat())
+    msv.searchCardHeight = searchCardHeight.toInt()
+
     val searchCardCornerRadius: Float =
-        getDimension(R.styleable.MaterialSearchView_searchCardCornerRadius, msv.searchCardCornerRadius)
-    msv.searchCardCornerRadius = searchCardCornerRadius
+        getDimension(R.styleable.MaterialSearchView_searchCardCornerRadius, msv.searchCardRadius)
+    msv.searchCardRadius = searchCardCornerRadius
+
+    val searchCardStrokeWidth: Float =
+        getDimension(R.styleable.MaterialSearchView_searchCardStrokeWidth, msv.searchCardStrokeWidth)
+    msv.searchCardStrokeWidth = searchCardStrokeWidth
+
+    val searchCardStrokeColor: Int =
+        getColor(R.styleable.MaterialSearchView_searchCardStrokeColor, msv.searchCardStrokeColor)
+    msv.searchCardStrokeColor = searchCardStrokeColor
+
+    val searchCardShadowColor: Int =
+        getColor(R.styleable.MaterialSearchView_searchCardShadowColor, msv.searchCardShadowColor)
+    msv.searchCardShadowColor = searchCardShadowColor
 
     val searchCardElevation: Float =
         getDimension(R.styleable.MaterialSearchView_searchCardElevation, msv.searchCardElevation)

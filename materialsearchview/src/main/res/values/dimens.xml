@@ -31,9 +31,9 @@
     <dimen name="searchCardMarginRight">4dp</dimen>
     <dimen name="searchCardMarginBottom">4dp</dimen>
     <dimen name="searchCardTranslationY">0dp</dimen>
-
-    <dimen name="cardViewSearchCornerRadius">2dp</dimen>
-    <dimen name="cardViewSearchElevation">8dp</dimen>
+    <dimen name="searchCardRadius">2dp</dimen>
+    <dimen name="searchCardElevation">8dp</dimen>
+    <dimen name="searchCardStrokeWidth">0dp</dimen>
 
     <dimen name="searchSuggestionItemMargin">16dp</dimen>
     <dimen name="searchSuggestionCardMarginLeft">4dp</dimen>

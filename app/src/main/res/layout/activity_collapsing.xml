@@ -18,19 +18,20 @@
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextAppearance="@color/white"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            app:layout_scrollFlags="scroll|snap|enterAlways|enterAlwaysCollapsed"
             app:statusBarScrim="@color/colorPrimary">
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="200dp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="?actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|snap|enterAlways|enterAlwaysCollapsed"
                 app:popupTheme="@style/ThemeOverlay.AppCompat"
                 app:titleTextColor="@android:color/white" />
 
@@ -49,18 +50,18 @@
         app:layout_constraintTop_toTopOf="parent"
         msv:searchBackgroundAnimation="RIPPLE" />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="56dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.CollapsingActivity">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/large_text" />
-
-    </androidx.core.widget.NestedScrollView>
+        tools:itemCount="4"
+        tools:listitem="@layout/item_user" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,1 +1,2 @@
-include(":app", ":materialsearchview")
+include(":app")
+include(":materialsearchview", ":toolbarsearchview")

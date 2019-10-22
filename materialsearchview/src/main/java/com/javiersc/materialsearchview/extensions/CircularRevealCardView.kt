@@ -50,8 +50,8 @@ fun CircularRevealCardView.show(
                     this@show.visible()
                 }
 
-                override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
-                    super.onAnimationEnd(animation, isReverse)
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
                     onAnimationEnd.invoke()
                 }
             })

@@ -2,15 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/collapsingActivity"
+        android:icon="@drawable/ic_one"
+        android:title="@string/title_activity_collapsing"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+    <item
+        android:id="@+id/appBarActivity"
+        android:icon="@drawable/ic_two"
+        android:title="@string/title_activity_appbar"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
     <item
         android:id="@+id/changeTheme"
-        android:icon="@drawable/ic_palette_white_24dp"
+        android:icon="@drawable/ic_palette"
         android:title="@string/change_theme"
         app:showAsAction="always"
         tools:ignore="AlwaysShowAction" />
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ic_search_white_24dp"
+        android:icon="@drawable/ic_search"
         android:title="@string/search_hint"
         app:showAsAction="always" />
+
 </menu>

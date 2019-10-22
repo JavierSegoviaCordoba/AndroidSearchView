@@ -41,12 +41,10 @@ class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(TaskDiffCallba
             if (searchTheme == SearchTheme.LIGHT) {
                 cardView.setCardBackgroundColor(context.color(R.color.searchCardBackgroundLight))
                 textViewName.setTextColor(context.color(R.color.searchTextLight))
-                textViewCompany.setTextColor(context.color(R.color.searchTextLight))
                 textViewEmail.setTextColor(context.color(R.color.searchTextHintLight))
             } else {
                 cardView.setCardBackgroundColor(context.color(R.color.appBarLayoutDark))
                 textViewName.setTextColor(context.color(R.color.searchTextDark))
-                textViewCompany.setTextColor(context.color(R.color.searchTextDark))
                 textViewEmail.setTextColor(context.color(R.color.searchTextHintDark))
             }
 
@@ -54,7 +52,6 @@ class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(TaskDiffCallba
             imageViewProfile.setImageDrawable(context.drawable(user.imageId))
 
             textViewName.text = user.name
-            textViewCompany.text = user.company
             textViewEmail.text = user.email
         }
     }

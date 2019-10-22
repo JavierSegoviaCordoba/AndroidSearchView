@@ -1,6 +1,8 @@
 package com.javiersc.androidsearchview.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -34,9 +36,12 @@ class MainActivity : AppCompatActivity() {
         savedInstanceState?.let { theme = if (it.getInt("THEME") == 0) SearchTheme.LIGHT else SearchTheme.DARK }
         setSupportActionBar(toolbar)
 
-        //startActivity(Intent(this, CollapsingActivity::class.java))
-
         materialSearchView.apply {
+
+            searchClearIconEnabled = true
+
+            searchMicIconEnabled = true
+
             searchType = SearchType.MENU
             onSearchTextChanged = { query -> println(query) }
             onSearchSubmit = { println(it) }
@@ -61,13 +66,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.search -> materialSearchView.apply {
-                searchMenuItem = item
-                open()
-            }
+            R.id.collapsingActivity -> startActivity(Intent(this, CollapsingActivity::class.java))
+            R.id.appBarActivity -> startActivity(Intent(this, AppBarActivity::class.java))
             R.id.changeTheme -> {
                 theme = if (theme == SearchTheme.LIGHT) SearchTheme.DARK else SearchTheme.LIGHT
                 changeMaterialSearchViewTheme(theme, materialSearchView, menu, suggestionAdapter)
+            }
+            R.id.search -> materialSearchView.apply {
+                searchMenuItem = item
+                open()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -77,6 +84,14 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
 
         outState.putInt("THEME", theme.value)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 181) {
+            materialSearchView.searchText = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0) ?: ""
+        }
     }
 }
 

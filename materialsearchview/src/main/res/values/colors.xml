@@ -14,7 +14,7 @@
     <color name="searchBackgroundLight">#4D000000</color>
     <color name="searchBackgroundRippleLight">#4D000000</color>
     <color name="searchCardBackgroundLight">#ffffff</color>
-    <color name="searchUpIconLight">#767676</color>
+    <color name="searchUpIconLight">#3B4043</color>
     <color name="suggestionCardBackgroundLight">#ffffff</color>
 
     <!--//////////////      Dark     //////////////-->
@@ -27,5 +27,9 @@
     <color name="searchCardBackgroundDark">#3C4043</color>
     <color name="searchUpIconDark">#F4F4F4</color>
     <color name="suggestionCardBackgroundDark">#3C4043</color>
+
+
+    <!--//////////////      Others     //////////////-->
+    <color name="statusBarWhiteTransparent">#E6FFFFFF</color>
 
 </resources>

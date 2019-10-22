@@ -26,12 +26,10 @@ internal fun <T> initSearchBackground(attrs: TypedArray, msv: MaterialSearchView
         ).toLong()
     msv.searchBackgroundOpenDuration = searchBackgroundOpenDuration
 
-    val searchCardBackgroundAnimation: Int =
+    val searchBackgroundAnimation: Int =
         getInteger(R.styleable.MaterialSearchView_searchBackgroundAnimation, msv.searchBackgroundAnimation.value)
-
-    msv.searchBackgroundAnimation =
-        SearchBackgroundAnimation.values().find { it.value == searchCardBackgroundAnimation }
-            ?: SearchBackgroundAnimation.FADE
+    msv.searchBackgroundAnimation = SearchBackgroundAnimation.values().find { it.value == searchBackgroundAnimation }
+        ?: SearchBackgroundAnimation.FADE
 
     msv.cardViewBackground.setOnClickListener { if (msv.isOpen) msv.searchTextView.clearFocus() }
 }

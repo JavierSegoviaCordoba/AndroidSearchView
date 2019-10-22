@@ -2,7 +2,6 @@ package com.javiersc.materialsearchview.inits
 
 import android.content.res.TypedArray
 import android.graphics.PointF
-import android.graphics.Typeface
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.addTextChangedListener
@@ -35,7 +34,7 @@ internal fun <T> initSearchText(attrs: TypedArray, msv: MaterialSearchView<T>) =
     msv.searchTextHintColor = searchTextHintColor
 
     val searchTextFont: Int = getResourceId(R.styleable.MaterialSearchView_searchTextFont, 0)
-    msv.searchTextFont = if (searchTextFont != 0) msv.context.font(searchTextFont) else Typeface.DEFAULT
+    msv.searchTextFont = if (searchTextFont != 0) msv.context.font(searchTextFont) else msv.searchTextFont
 
     val searchTextTranslationY: Float =
         getDimension(R.styleable.MaterialSearchView_searchTextTranslationY, msv.searchTextTranslationY)

@@ -1,10 +1,16 @@
 package com.javiersc.materialsearchview.extensions
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.ContextWrapper
+import android.content.Intent
 import android.graphics.PointF
+import android.speech.RecognizerIntent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 
 
 fun View.visible() {
@@ -101,5 +107,33 @@ fun View.marginBottom(marginBottom: Int) {
             marginEnd = rightMargin
         }
         this.requestLayout()
+    }
+}
+
+fun View.setHeight(height: Int) {
+    if (this.layoutParams is ViewGroup.MarginLayoutParams) {
+        val layoutParams = this.layoutParams as ViewGroup.MarginLayoutParams
+        layoutParams.height = height
+        this.requestLayout()
+    }
+}
+
+
+fun View.getActivity(): Activity? {
+    var context = this.context
+    while (context is ContextWrapper) {
+        if (context is Activity) return context
+        context = context.baseContext
+    }
+    return null
+}
+
+fun View.voiceInput() {
+    try {
+        val activity = getActivity()
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        activity?.startActivityForResult(intent, 181)
+    } catch (e: ActivityNotFoundException) {
+        Toast.makeText(this.context, "Recognize speech not available", Toast.LENGTH_LONG).show()
     }
 }

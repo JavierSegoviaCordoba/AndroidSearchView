@@ -31,11 +31,17 @@
             android:id="@+id/cardViewSearch"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:layout_margin="@dimen/searchCardMargin"
+            android:layout_marginStart="@dimen/searchSuggestionCardMarginLeft"
+            android:layout_marginTop="@dimen/searchCardMarginTop"
+            android:layout_marginEnd="@dimen/searchSuggestionCardMarginRight"
+            android:layout_marginBottom="@dimen/searchCardMarginBottom"
+            android:clickable="true"
+            android:focusable="true"
             android:visibility="visible"
+            app:cardCornerRadius="@dimen/searchCardRadius"
             app:cardBackgroundColor="@android:color/white"
-            app:cardCornerRadius="@dimen/cardViewSearchCornerRadius"
-            app:cardElevation="@dimen/cardViewSearchElevation"
+            app:cardElevation="@dimen/searchCardElevation"
+            app:rippleColor="@android:color/transparent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,8 +50,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constrainLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/imageButtonUp"
@@ -59,7 +64,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/ic_menu_black_24dp" />
+                    tools:src="@drawable/ic_menu" />
 
                 <com.javiersc.materialsearchview.utils.SearchTextView
                     android:id="@+id/searchTextView"
@@ -68,15 +73,70 @@
                     android:layout_marginStart="@dimen/searchTextMarginLeft"
                     android:layout_marginEnd="@dimen/searchTextMarginRight"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/google_sans_regular"
                     android:hint="@string/search_hint"
                     android:imeOptions="actionSearch|flagNoExtractUi"
                     android:includeFontPadding="false"
                     android:inputType="text"
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButtonClear"
                     app:layout_constraintStart_toEndOf="@+id/imageButtonUp"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imageButtonClear"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?android:attr/actionBarItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/searchUpIconLight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButtonMic"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_clear" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imageButtonMic"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?android:attr/actionBarItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/searchUpIconLight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cardViewUser"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_mic" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewUser"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/imageButtonUser"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="?android:attr/actionBarItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:scaleType="centerCrop"
+                        tools:ignore="UnusedAttribute"
+                        tools:src="@drawable/ic_avatar_example" />
+
+                </com.google.android.material.card.MaterialCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -104,7 +164,7 @@
                 android:clipToPadding="false"
                 tools:itemCount="3"
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@android:layout/simple_list_item_checked" />
+                tools:listitem="@android:layout/simple_list_item_2" />
 
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 

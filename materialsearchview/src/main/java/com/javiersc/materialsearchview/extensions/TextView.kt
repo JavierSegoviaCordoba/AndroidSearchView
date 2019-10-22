@@ -7,12 +7,16 @@ fun TextView.deleteTextAnimated(duration: Long = 350, delay: Long = 0) {
     var text = this.text.toString()
     val numberOfChars = this.text.length
     val valueAnimator = ValueAnimator.ofInt(numberOfChars, 0)
+    this.isCursorVisible = false
     valueAnimator.apply {
         addUpdateListener {
             val value = it.animatedValue as Int
             text = text.substring(0, value)
             this@deleteTextAnimated.text = text
-            if (value == 0) this@deleteTextAnimated.hint = ""
+            if (value == 0) this@deleteTextAnimated.apply {
+                hint = ""
+                isCursorVisible = true
+            }
         }
         this.duration = duration
         startDelay = delay
