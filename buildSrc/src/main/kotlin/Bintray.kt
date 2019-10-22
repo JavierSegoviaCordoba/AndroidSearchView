@@ -6,8 +6,8 @@ object Bintray {
     const val artifactId = Build.artifactId
     const val version = Build.versionName
 
-    const val repo = "Resource"
-    const val name = repo
+    const val repo = "AndroidSearchView"
+    const val name = "Material"
     const val userOrg = "javiersegoviacordoba"
     const val description = "Material SearchView for Android."
     const val websiteUrl = "https://github.com/JavierSegoviaCordoba/AndroidSearchView/"
@@ -19,6 +19,5 @@ object Bintray {
     const val label3 = "Android"
     const val label4 = "Material"
 
-    const val artifactJar = "build/libs/$artifactId.jar"
     const val artifactAar = "build/outputs/aar/$artifactId-release.aar"
 }

@@ -1,7 +1,5 @@
 import com.javiersc.plugins.extensions.bintray
-import com.javiersc.plugins.extensions.main
 import com.javiersc.plugins.extensions.publishing
-import com.javiersc.plugins.extensions.sourceSets
 import java.util.*
 
 apply(plugin = Plugins.bintray)
@@ -9,11 +7,6 @@ apply(plugin = Plugins.mavenPublish)
 
 val localProperties =
     Properties().apply { load(rootProject.file("local.properties").inputStream()) }
-
-val sourcesJar: Jar by tasks.creating(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
 
 bintray {
     user = localProperties.getProperty(Bintray.user)
@@ -40,8 +33,6 @@ publishing {
             groupId = Bintray.groupId
             artifactId = Bintray.artifactId
             version = Bintray.version
-            artifact(sourcesJar)
-            artifact(Bintray.artifactJar)
             artifact(Bintray.artifactAar)
         }
     }

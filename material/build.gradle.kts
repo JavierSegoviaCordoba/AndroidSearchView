@@ -1,5 +1,6 @@
 plugins {
     AndroidSetup
+    BintraySetup
 }
 
 android {
