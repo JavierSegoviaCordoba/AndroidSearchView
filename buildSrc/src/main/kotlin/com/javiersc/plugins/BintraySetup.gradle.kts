@@ -8,6 +8,11 @@ apply(plugin = Plugins.mavenPublish)
 val localProperties =
     Properties().apply { load(rootProject.file("local.properties").inputStream()) }
 
+val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("sources")
+    from("src/main/java")
+}
+
 bintray {
     user = localProperties.getProperty(Bintray.user)
     key = localProperties.getProperty(Bintray.key)
@@ -33,6 +38,7 @@ publishing {
             groupId = Bintray.groupId
             artifactId = Bintray.artifactId
             version = Bintray.version
+            artifact(sourcesJar)
             artifact(Bintray.artifactAar)
         }
     }
