@@ -12,81 +12,80 @@ import com.javiersc.androidsearchview.material.constants.SearchTheme
 import com.javiersc.androidsearchview.material.extensions.color
 import com.javiersc.androidsearchview.ui.adapter.SuggestionAdapter
 import com.javiersc.androidsearchview.ui.extension.colorize
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.constrainLayoutParent
+import kotlinx.android.synthetic.main.activity_main.recyclerViewUsers
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
-
-fun <T> Activity.changeMaterialSearchViewTheme(
+fun  Activity.changeMaterialSearchViewTheme(
     theme: SearchTheme,
-    materialSearchView: MaterialSearchView<T>,
+    materialSearchView: MaterialSearchView,
     menu: Menu?,
     suggestionAdapter: SuggestionAdapter
-) = with(materialSearchView) {
-    if (theme != SearchTheme.DARK) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+) =
+    with(materialSearchView) {
+        if (theme != SearchTheme.DARK) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                colorize(color(R.color.appBarLayoutDark), color(R.color.appBarLayoutLight)) { color
+                    ->
+                    window.statusBarColor = color
+                }
+            }
+
+            colorize(color(R.color.backgroundParentDark), color(R.color.backgroundParentLight)) {
+                color ->
+                constrainLayoutParent.setBackgroundColor(color)
+            }
+
+            menu?.forEach {
+                colorize(color(R.color.searchTextDark), color(R.color.searchTextLight)) { color ->
+                    it.icon.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                }
+            }
+
             colorize(color(R.color.appBarLayoutDark), color(R.color.appBarLayoutLight)) { color ->
+                toolbar.setBackgroundColor(color)
+            }
+
+            colorize(color(R.color.searchTextDark), color(R.color.searchTextLight)) { color ->
+                toolbar.setTitleTextColor(color)
+            }
+
+            suggestionAdapter.apply { searchTheme = SearchTheme.LIGHT }
+
+            searchTheme = SearchTheme.LIGHT
+            setupRecyclerView(recyclerViewUsers, SearchTheme.LIGHT)
+        } else {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                window.decorView.systemUiVisibility = 0
+
+            colorize(color(R.color.appBarLayoutLight), color(R.color.appBarLayoutDark)) { color ->
                 window.statusBarColor = color
             }
-        }
 
-        colorize(color(R.color.backgroundParentDark), color(R.color.backgroundParentLight)) { color ->
-            constrainLayoutParent.setBackgroundColor(color)
-        }
-
-        menu?.forEach {
-            colorize(color(R.color.searchTextDark), color(R.color.searchTextLight)) { color ->
-                it.icon.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+            colorize(color(R.color.backgroundParentLight), color(R.color.backgroundParentDark)) {
+                color ->
+                constrainLayoutParent.setBackgroundColor(color)
             }
-        }
 
-        colorize(color(R.color.appBarLayoutDark), color(R.color.appBarLayoutLight)) { color ->
-            toolbar.setBackgroundColor(color)
-        }
+            menu?.forEach {
+                colorize(color(R.color.searchTextLight), color(R.color.searchTextDark)) { color ->
+                    it.icon.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                }
+            }
 
-        colorize(color(R.color.searchTextDark), color(R.color.searchTextLight)) { color ->
-            toolbar.setTitleTextColor(color)
-        }
+            colorize(color(R.color.appBarLayoutLight), color(R.color.appBarLayoutDark)) { color ->
+                toolbar.setBackgroundColor(color)
+            }
 
-        suggestionAdapter.apply {
-            searchTheme = SearchTheme.LIGHT
-        }
-
-        searchTheme = SearchTheme.LIGHT
-        setupRecyclerView(recyclerViewUsers, SearchTheme.LIGHT)
-
-    } else {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) window.decorView.systemUiVisibility = 0
-
-        colorize(color(R.color.appBarLayoutLight), color(R.color.appBarLayoutDark)) { color ->
-            window.statusBarColor = color
-        }
-
-        colorize(color(R.color.backgroundParentLight), color(R.color.backgroundParentDark)) { color ->
-            constrainLayoutParent.setBackgroundColor(color)
-        }
-
-        menu?.forEach {
             colorize(color(R.color.searchTextLight), color(R.color.searchTextDark)) { color ->
-                it.icon.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                toolbar.setTitleTextColor(color)
             }
-        }
 
-        colorize(color(R.color.appBarLayoutLight), color(R.color.appBarLayoutDark)) { color ->
-            toolbar.setBackgroundColor(color)
-        }
+            suggestionAdapter.apply { searchTheme = SearchTheme.DARK }
 
-        colorize(color(R.color.searchTextLight), color(R.color.searchTextDark)) { color ->
-            toolbar.setTitleTextColor(color)
-        }
-
-        suggestionAdapter.apply {
             searchTheme = SearchTheme.DARK
+            setupRecyclerView(recyclerViewUsers, SearchTheme.DARK)
         }
-
-        searchTheme = SearchTheme.DARK
-        setupRecyclerView(recyclerViewUsers, SearchTheme.DARK)
-
     }
-
-}

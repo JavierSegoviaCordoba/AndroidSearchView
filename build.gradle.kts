@@ -1,12 +1,26 @@
+import io.github.gradlenexus.publishplugin.NexusPublishExtension
+
+plugins {
+    id("io.github.gradle-nexus.publish-plugin")
+    id("org.jetbrains.dokka")
+}
+
+configure<NexusPublishExtension> {
+    repositories {
+        sonatype {
+            username.set("${properties["oss.user"] ?: System.getenv("OSS_USER")}")
+            password.set("${properties["oss.token"] ?: System.getenv("OSS_TOKEN")}")
+            stagingProfileId.set(
+                "${properties["oss.stagingProfileId"] ?: System.getenv("OSS_STAGING_PROFILE_ID")}"
+            )
+        }
+    }
+}
 
 buildscript {
     repositories {
         google()
         jcenter()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:3.4.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.40")
     }
 }
 

@@ -47,5 +47,5 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.9.0")
 
     implementation(project(Modules.material))
-    implementation(project(Modules.toolbar))
+//    implementation(project(Modules.toolbar))
 }

@@ -6,7 +6,7 @@ package com.javiersc.toolbar
 //import com.google.android.material.appbar.MaterialToolbar
 //import kotlinx.android.synthetic.main.toolbar_search_view.view.*
 //
-//class ToolbarSearchView<T> @JvmOverloads constructor(
+//class ToolbarSearchView @JvmOverloads constructor(
 //    context: Context,
 //    attributeSet: AttributeSet? = null,
 //    defStyleAttr: Int = 0

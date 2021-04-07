@@ -11,8 +11,10 @@ import com.javiersc.androidsearchview.material.constants.SearchTheme
 import com.javiersc.androidsearchview.material.extensions.color
 import com.javiersc.androidsearchview.material.extensions.drawable
 import com.javiersc.androidsearchview.model.User
-import kotlinx.android.synthetic.main.item_user.view.*
-
+import kotlinx.android.synthetic.main.item_user.view.cardView
+import kotlinx.android.synthetic.main.item_user.view.imageViewProfile
+import kotlinx.android.synthetic.main.item_user.view.textViewEmail
+import kotlinx.android.synthetic.main.item_user.view.textViewName
 
 class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(TaskDiffCallback()) {
 
@@ -31,44 +33,37 @@ class UserAdapter : ListAdapter<User, UserAdapter.UserViewHolder>(TaskDiffCallba
         holder.bind(getItem(position))
     }
 
-    inner class UserViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(user: User) = with(itemView) {
-            setOnClickListener { onClick?.invoke(user, adapterPosition) }
-            setOnLongClickListener { onLongClick?.invoke(user, adapterPosition).let { true } }
+        fun bind(user: User) =
+            with(itemView) {
+                setOnClickListener { onClick?.invoke(user, adapterPosition) }
+                setOnLongClickListener { onLongClick?.invoke(user, adapterPosition).let { true } }
 
-            if (searchTheme == SearchTheme.LIGHT) {
-                cardView.setCardBackgroundColor(context.color(R.color.searchCardBackgroundLight))
-                textViewName.setTextColor(context.color(R.color.searchTextLight))
-                textViewEmail.setTextColor(context.color(R.color.searchTextHintLight))
-            } else {
-                cardView.setCardBackgroundColor(context.color(R.color.appBarLayoutDark))
-                textViewName.setTextColor(context.color(R.color.searchTextDark))
-                textViewEmail.setTextColor(context.color(R.color.searchTextHintDark))
+                if (searchTheme == SearchTheme.LIGHT) {
+                    cardView.setCardBackgroundColor(
+                        context.color(R.color.searchCardBackgroundLight)
+                    )
+                    textViewName.setTextColor(context.color(R.color.searchTextLight))
+                    textViewEmail.setTextColor(context.color(R.color.searchTextHintLight))
+                } else {
+                    cardView.setCardBackgroundColor(context.color(R.color.appBarLayoutDark))
+                    textViewName.setTextColor(context.color(R.color.searchTextDark))
+                    textViewEmail.setTextColor(context.color(R.color.searchTextHintDark))
+                }
+
+                imageViewProfile.setImageDrawable(context.drawable(user.imageId))
+
+                textViewName.text = user.name
+                textViewEmail.text = user.email
             }
-
-
-            imageViewProfile.setImageDrawable(context.drawable(user.imageId))
-
-            textViewName.text = user.name
-            textViewEmail.text = user.email
-        }
     }
-
 
     class TaskDiffCallback : DiffUtil.ItemCallback<User>() {
 
-        override fun areItemsTheSame(
-            oldItem: User,
-            newItem: User
-        ): Boolean = oldItem.imageId == newItem.imageId
+        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean =
+            oldItem.imageId == newItem.imageId
 
-        override fun areContentsTheSame(
-            oldItem: User,
-            newItem: User
-        ): Boolean = oldItem == newItem
-
+        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean = oldItem == newItem
     }
-
 }

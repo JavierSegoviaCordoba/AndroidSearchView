@@ -7,7 +7,9 @@ import com.javiersc.androidsearchview.material.constants.SearchTheme
 import com.javiersc.androidsearchview.material.extensions.color
 import com.javiersc.androidsearchview.material.extensions.font
 import com.javiersc.androidsearchview.ui.setups.setupRecyclerView
-import kotlinx.android.synthetic.main.activity_collapsing.*
+import kotlinx.android.synthetic.main.activity_collapsing.collapsingToolbarLayout
+import kotlinx.android.synthetic.main.activity_collapsing.recyclerViewUsers
+import kotlinx.android.synthetic.main.activity_collapsing.toolbar
 
 class CollapsingActivity : AppCompatActivity() {
 
@@ -24,8 +26,5 @@ class CollapsingActivity : AppCompatActivity() {
         }
 
         setupRecyclerView(recyclerViewUsers, SearchTheme.LIGHT)
-
-
     }
-
 }

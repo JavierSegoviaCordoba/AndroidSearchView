@@ -1,3 +1,4 @@
-import com.javiersc.plugins.Modules
 
-Modules.all.forEach { module -> include(module) }
+include(":app")
+include(":material")
+//include(":toolbar")

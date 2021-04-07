@@ -13,8 +13,8 @@ import com.javiersc.androidsearchview.ui.adapter.SuggestionAdapter
 import com.javiersc.androidsearchview.ui.dummy.Lists
 import com.javiersc.androidsearchview.ui.extension.toastShort
 import com.javiersc.androidsearchview.ui.setups.changeMaterialSearchViewTheme
-import kotlinx.android.synthetic.main.activity_main.*
-
+import kotlinx.android.synthetic.main.activity_main.materialSearchView
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,11 +33,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        savedInstanceState?.let { theme = if (it.getInt("THEME") == 0) SearchTheme.LIGHT else SearchTheme.DARK }
+        savedInstanceState?.let {
+            theme = if (it.getInt("THEME") == 0) SearchTheme.LIGHT else SearchTheme.DARK
+        }
         setSupportActionBar(toolbar)
 
         materialSearchView.apply {
-
             searchClearIconEnabled = true
 
             searchMicIconEnabled = true
@@ -45,13 +46,14 @@ class MainActivity : AppCompatActivity() {
             searchType = SearchType.MENU
             onSearchTextChanged = { query -> println(query) }
             onSearchSubmit = { println(it) }
-            onSearchSuggestionFilter = { query ->
-                if (query.isEmpty()) suggestionAdapter.submitList(emptyList())
-                else {
-                    val list = Lists.USERS.filter { it.name.contains(query, ignoreCase = true) }
-                    suggestionAdapter.submitList(list)
+            onSearchSuggestionFilter =
+                { query ->
+                    if (query.isEmpty()) suggestionAdapter.submitList(emptyList())
+                    else {
+                        val list = Lists.USERS.filter { it.name.contains(query, ignoreCase = true) }
+                        suggestionAdapter.submitList(list)
+                    }
                 }
-            }
             searchSuggestionAdapter = suggestionAdapter
         }
     }
@@ -72,10 +74,11 @@ class MainActivity : AppCompatActivity() {
                 theme = if (theme == SearchTheme.LIGHT) SearchTheme.DARK else SearchTheme.LIGHT
                 changeMaterialSearchViewTheme(theme, materialSearchView, menu, suggestionAdapter)
             }
-            R.id.search -> materialSearchView.apply {
-                searchMenuItem = item
-                open()
-            }
+            R.id.search ->
+                materialSearchView.apply {
+                    searchMenuItem = item
+                    open()
+                }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -90,8 +93,8 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 181) {
-            materialSearchView.searchText = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0) ?: ""
+            materialSearchView.searchText =
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0) ?: ""
         }
     }
 }
-
